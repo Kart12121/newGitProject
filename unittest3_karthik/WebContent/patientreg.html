@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+  <title>Patient Registration Form</title>
+  <style>
+    .container {
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Patient Registration Form</h2>
+    <form action="Register.jsp" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <label for="type_ip">
+          <input type="radio" id="type_ip" name="type" value="IP" required> IP
+        </label>
+        <label for="type_op">
+          <input type="radio" id="type_op" name="type" value="OP" required> OP
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="reg_date">Date of Reg:</label>
+        <input type="date" id="reg_date" name="reg_date" required>
+      </div>
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+          <option value="">Select Department</option>
+          <option value="Ortho">Ortho</option>
+          <option value="Pediatric">Pediatric</option>
+          <option value="General">General</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <label for="location_bangalore">
+          <input type="radio" id="location_bangalore" name="location" value="Bangalore" required> Bangalore
+        </label>
+        <label for="location_pune">
+          <input type="radio" id="location_pune" name="location" value="Pune" required> Pune
+          <label for="location_chennai">
+          <input type="radio" id="location_chennai" name="location" value="chennai" required> chennai
+        
+         <div class="form-group">
+        <label for="suggested">Suggested:</label>
+       <div class="checkbox-group">
+      <label class="checkbox">
+        <input type="checkbox" name="xray">XRay
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="ecg">ECG
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="mri">MRI
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="bloodtest">Blood Test
+      </label>
+    </div>
+
+    <button type="submit">Register</button>
+        </

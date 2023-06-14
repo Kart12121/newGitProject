@@ -1,0 +1,62 @@
+package com.ntt.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ntt.domain.Patient;
+
+public class PatientDao {
+	
+	    private Connection getConnection() throws SQLException {
+	    	
+			return null;
+	       
+	    }
+	    public class UserDAO {
+	    	private String jdbcURL = "jdbc:mysql://localhost:3306kartik?useSSL=false";
+	    	private String jdbcUsername = "root";
+	    	private String jdbcPassword = "Nttdata@123";
+	    public void registerPatient(Patient patient) {
+	        try (Connection conn = getConnection();
+	             PreparedStatement stmt = conn.prepareStatement(
+	                     "INSERT INTO patients (id, username, password, type, reg_date, department, location, suggested) " +
+	                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+	            stmt.setInt(1, patient.getId());
+	            stmt.setString(2, patient.getUsername());
+	            stmt.setString(3, patient.getPassword());
+	            stmt.setString(4, patient.getType());
+	            stmt.setString(5, patient.getDateofReg());
+	            stmt.setString(6, patient.getDepartment());
+	            stmt.setString(7, patient.getLocation());
+	            stmt.setString(8, patient.getSuggested());
+	            
+	            stmt.executeUpdate();
+	        } catch (SQLException e) {
+	       e.printStackTrace(); 
+	        }
+	    }
+public List<Patient> getPatientsByLanguage(String language) {
+	        List<Patient> patients = new ArrayList<>();
+	        
+	        try (Connection conn = getConnection();
+	             Statement stmt = conn.createStatement();
+	             ResultSet rs = stmt.executeQuery("SELECT * FROM patients WHERE type IN ('English', 'Hindi')")) {
+	            while (rs.next()) {
+	                Patient patient = new Patient();
+	                patient.setId(rs.getInt("id"));
+	                patient.setUsername(rs.getString("username"));
+	              
+	                patients.add(patient);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  
+	        }
+	        
+	        return patients;
+	    }
+}
